@@ -17,7 +17,7 @@ export default function QRCode({
 		const pngFile = canvas.toDataURL("image/png");
 
 		const downloadLink = document.createElement("a");
-		downloadLink.download = `${userName} - ${new Date().getUTCDate()}`;
+		downloadLink.download = `${userName} - ${new Date().toLocaleDateString()}`;
 		downloadLink.href = `${pngFile}`;
 		downloadLink.click();
 	}
@@ -26,7 +26,7 @@ export default function QRCode({
 		<div ref={canvasRef} className="flex flex-col">
 			<div className="mx-auto">
 				<QRCodeCanvas
-					value={`${window.location.hostname}/user/${userId}`}
+					value={`https://${window.location.hostname}/user/${userId}`}
 				/>
 			</div>
 			<button
