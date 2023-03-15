@@ -63,7 +63,7 @@ function User({
 	};
 }) {
 	return (
-		<Link href={`/user/${user.id}`}>
+		<Link href={`/scan/${user.id}`}>
 			<div className="flex flex-col items-center gap-2 border-2 p-5 rounded-md w-[180px] h-[180px] hover:bg-slate-50 shadow-sm">
 				<div className="relative w-16 h-16">
 					<Image
