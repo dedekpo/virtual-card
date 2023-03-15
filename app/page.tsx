@@ -1,91 +1,85 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from './page.module.css'
+import Link from "next/link";
+import Image from "next/image";
+import { prisma } from "../lib/prismadb";
 
-const inter = Inter({ subsets: ['latin'] })
+import { format } from "date-fns";
+import ptBR from "date-fns/locale/pt-BR";
 
-export default function Home() {
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+export default async function Home() {
+	const users = await prisma.user.findMany();
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
-        </div>
-      </div>
+	return (
+		<main>
+			<div className="max-w-5xl mx-auto mt-10">
+				<div className="h-[60vh] w-[80vw] absolute mx-auto left-0 right-0 top-[40vh] -z-10">
+					<Image
+						src="/girl-illustration.svg"
+						alt="Girl illustration"
+						fill
+						className="object-cover"
+					/>
+				</div>
+				<div>
+					<h1 className="text-4xl font-bold">
+						Checkout all our users
+					</h1>
+					<p className="text-gray-600">
+						All have created their QR Code, create yours as well!
+					</p>
+				</div>
+				<div className="mt-10 flex flex-wrap items-center gap-3">
+					<Link href="/generate">
+						<div className="border-2 flex flex-col items-center justify-center w-[180px] h-[180px] rounded-md hover:bg-slate-50 shadow-sm">
+							<button className="w-[50px] h-[50px] border-[1px] bg-purple-700 text-white rounded-full font-bold">
+								+
+							</button>
+							<span className="text-xs text-gray-500 mt-2 font-bold">
+								Create my QR Code
+							</span>
+						</div>
+					</Link>
+					{users.map((user) => (
+						<User key={user.id} user={user} />
+					))}
+				</div>
+			</div>
+		</main>
+	);
+}
 
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+function User({
+	user,
+}: {
+	user: {
+		id: string;
+		name: string;
+		image_url: string | null;
+		linkedin_url: string | null;
+		github_url: string | null;
+		history: string | null;
+		created_at: Date;
+	};
+}) {
+	return (
+		<Link href={`/user/${user.id}`}>
+			<div className="flex flex-col items-center gap-2 border-2 p-5 rounded-md w-[180px] h-[180px] hover:bg-slate-50 shadow-sm">
+				<div className="relative w-16 h-16">
+					<Image
+						src={user.image_url || ""}
+						alt={user.name}
+						fill
+						className="rounded-full object-cover"
+					/>
+				</div>
+				<span className="text-sm text-gray-600 text-center">
+					{user.name}
+				</span>
+				<span className="text-gray-500 text-xs mt-auto">
+					{format(new Date(user.created_at), "d MMM", {
+						locale: ptBR,
+					}).toLocaleUpperCase()}
+				</span>
+			</div>
+		</Link>
+	);
 }

@@ -1,38 +1,41 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# QR Code Generator Web Application
+
+This is a web application that generates a unique QR code for users who want to easily share their information. The application was developed by André Elias as a test for a job application using React with NextJS framework.
+
+## How It Works
+
+The web application has three main functionalities:
+
+1. List all users that already have created a QR Code ('/')
+
+2. Generates a unique QR Code given the user's data - Users can access the page that generates a unique QR code for them to share with others. The URL contains the user's id and is accessed by visiting /user/{id}. The id is a parameter passed to the page that generates the QR code, and the application generates a unique QR code for each id. ('/generate')
+
+3. Redirects to user's page - When someone scans the QR code, it redirects them to the user's page. The user's page contains their information and picture. ('scan/{id}')
+
+## Deployment and Hosting
+
+The application was deployed on Vercel and hosted a PostgreSQL database on Railway.
+
+## Technologies Used:
+
+-   React
+-   NextJS
+-   PostgreSQL
+-   AWS (S3 for picture upload)
 
 ## Getting Started
 
-First, run the development server:
+To run this project locally, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+Clone this repository
+Run npm install or yarn install to install the dependencies
+Run npm run dev or yarn dev to start the development server
+Open http://localhost:3000 in your browser
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Demo
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+You can access a live demo of this project at https://qr-code-generator.vercel.app/.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Author
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This web application was developed by André Elias. You can find me on [LinkedIn](https://www.linkedin.com/in/andr%C3%A9-elias/) or [GitHub](https://github.com/dedekpo).
