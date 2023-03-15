@@ -11,7 +11,7 @@ export default async function User({ params }: { params: { userId: string } }) {
 	});
 
 	return (
-		<div className="w-full h-screen flex items-center justify-center border-2">
+		<div className="w-full h-screen flex items-center justify-center">
 			<div className="flex flex-col border-2 rounded-md p-5">
 				<p className="text-xl font-bold text-center mb-5">
 					{user?.name}

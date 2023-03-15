@@ -26,10 +26,7 @@ export default function QRCode({
 		<div ref={canvasRef} className="flex flex-col">
 			<div className="mx-auto">
 				<QRCodeCanvas
-					value={`${
-						!window.location.hostname.includes("localhost") &&
-						"https://"
-					}${window.location.hostname}/user/${userId}`}
+					value={`https://${window.location.hostname}/user/${userId}`}
 				/>
 			</div>
 			<button

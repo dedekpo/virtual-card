@@ -12,7 +12,7 @@ export default async function Home() {
 
 	return (
 		<main>
-			<div className="max-w-5xl mx-auto mt-10">
+			<div className="max-w-[90%] md:max-w-5xl mx-auto my-10">
 				<div className="h-[60vh] w-[80vw] absolute mx-auto left-0 right-0 top-[40vh] -z-10">
 					<Image
 						src="/girl-illustration.svg"
@@ -31,7 +31,7 @@ export default async function Home() {
 				</div>
 				<div className="mt-10 flex flex-wrap items-center gap-3">
 					<Link href="/generate">
-						<div className="border-2 flex flex-col items-center justify-center w-[180px] h-[180px] rounded-md hover:bg-slate-50 shadow-sm">
+						<div className="border-2 flex flex-col items-center justify-center w-[43vw] h-[160px] md:w-[180px] md:h-[180px] rounded-md hover:bg-slate-50 shadow-sm">
 							<button className="w-[50px] h-[50px] border-[1px] bg-purple-700 text-white rounded-full font-bold">
 								+
 							</button>
@@ -64,7 +64,7 @@ function User({
 }) {
 	return (
 		<Link href={`/scan/${user.id}`}>
-			<div className="flex flex-col items-center gap-2 border-2 p-5 rounded-md w-[180px] h-[180px] hover:bg-slate-50 shadow-sm">
+			<div className="flex flex-col items-center gap-2 border-2 p-5 rounded-md w-[43vw] h-[160px] md:w-[180px] md:h-[180px] hover:bg-slate-50 shadow-sm">
 				<div className="relative w-16 h-16">
 					<Image
 						src={user.image_url || ""}
