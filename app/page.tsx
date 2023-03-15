@@ -5,6 +5,8 @@ import { prisma } from "../lib/prismadb";
 import { format } from "date-fns";
 import ptBR from "date-fns/locale/pt-BR";
 
+export const revalidate = 0;
+
 export default async function Home() {
 	const users = await prisma.user.findMany();
 
