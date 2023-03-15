@@ -4,13 +4,15 @@ This is a web application that generates a unique QR code for users who want to 
 
 ## How It Works
 
-The web application has three main functionalities:
+The web application has four main functionalities:
 
 1. List all users that already have created a QR Code ('/')
 
-2. Generates a unique QR Code given the user's data - Users can access the page that generates a unique QR code for them to share with others. The URL contains the user's id and is accessed by visiting /user/{id}. The id is a parameter passed to the page that generates the QR code, and the application generates a unique QR code for each id. ('/generate')
+2. Generates a unique QR Code given the user's data ('/generate')
 
 3. Redirects to user's page - When someone scans the QR code, it redirects them to the user's page. The user's page contains their information and picture. ('scan/{id}')
+
+4. Display the user data ('/user/{id}')
 
 ## Deployment and Hosting
 
@@ -20,8 +22,10 @@ The application was deployed on Vercel and hosted a PostgreSQL database on Railw
 
 -   React
 -   NextJS
+-   Typescript
 -   PostgreSQL
 -   AWS (S3 for picture upload)
+-   TailwindCSS
 
 ## Getting Started
 
