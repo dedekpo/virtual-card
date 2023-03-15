@@ -1,6 +1,8 @@
 import { prisma } from "../../../lib/prismadb";
 import QRCode from "./qr-code";
 
+// Page for reading and download the user's QR Code
+
 export default async function User({ params }: { params: { userId: string } }) {
 	const user = await prisma.user.findUnique({
 		where: {

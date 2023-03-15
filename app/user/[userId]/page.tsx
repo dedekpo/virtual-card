@@ -2,6 +2,8 @@ import { prisma } from "../../../lib/prismadb";
 import Image from "next/image";
 import Link from "next/link";
 
+// Page that displays the selected user data
+
 export default async function User({ params }: { params: { userId: string } }) {
 	const user = await prisma.user.findUnique({
 		where: {

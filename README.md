@@ -28,13 +28,16 @@ The application was deployed on Vercel and hosted a PostgreSQL database on Railw
 To run this project locally, follow these steps:
 
 Clone this repository
+
 Run npm install or yarn install to install the dependencies
+
 Run npm run dev or yarn dev to start the development server
+
 Open http://localhost:3000 in your browser
 
 ## Demo
 
-You can access a live demo of this project at https://qr-code-generator.vercel.app/.
+You can access a live demo of this project at https://virtual-card-nine.vercel.app/.
 
 ## Author
 

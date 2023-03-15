@@ -1,5 +1,7 @@
 "use client";
 
+// Page that generates a new user given the data on the form
+
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Image from "next/image";
